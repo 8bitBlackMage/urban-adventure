@@ -3,6 +3,8 @@ project(RaylibTopDown)
 
 # Set this to the minimal version you want to support
 find_package(raylib 3.0 QUIET) # Let CMake search for a raylib-config.cmake
+
+add_subdirectory(LDtkLoader)
 # You could change the QUIET above to REQUIRED and remove this if() clause
 # This part downloads raylib and builds it if it's not installed on your system
 if (NOT raylib_FOUND) # If there's none, fetch and build raylib
@@ -30,9 +32,9 @@ endif()
 
 # This is the main part:
 
-add_executable(${PROJECT_NAME} main.cpp Graphics/Graphics.cpp Graphics/Graphics.h )
+add_executable(${PROJECT_NAME} main.cpp Graphics/Graphics.cpp Graphics/Graphics.h Maps/Map.cpp Maps/Map.h)
 #set(raylib_VERBOSE 1)
-target_link_libraries(${PROJECT_NAME} raylib)
+target_link_libraries(${PROJECT_NAME} raylib LDtkLoader)
 
 # Checks if OSX and links appropriate frameworks (Only required on MacOS)
 if (APPLE)

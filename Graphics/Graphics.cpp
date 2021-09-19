@@ -11,7 +11,7 @@ void Graphics::init(int Width, int Height) {
     SetWindowState(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_MAXIMIZED);
     output = LoadRenderTexture(Width,Height);
     SetWindowMinSize(output.texture.width*4,output.texture.height*4);
-   // SetTargetFPS( 60);
+   SetTargetFPS( 60);
 }
 
 void Graphics::BeginScaleDrawing()

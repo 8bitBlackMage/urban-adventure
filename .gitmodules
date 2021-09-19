@@ -1,0 +1,3 @@
+[submodule "LDtkLoader"]
+	path = LDtkLoader
+	url = https://github.com/Madour/LDtkLoader
