@@ -5,16 +5,26 @@
 #ifndef RAYLIBTOPDOWN_MAP_H
 #define RAYLIBTOPDOWN_MAP_H
 #include <string>
-
+#include <vector>
+#include "LDtkLoader/World.hpp"
 class Map {
 public:
-    Map(std::string worldFile);
+    Map();
+    Map(std::string worldFile, ldtk::Level currentlyLoadedLevel);
 
-    void LoadLevel(int positionInList);
-
+    void loadWorld(std::string worldFile);
+    void LoadLevel(int levelID);
+    void LoadLevelFromOtherWorld(std::string mapFile,int levelID);
+    std::vector<std::string*>& getTexturePaths();
+    void setLayerVisibility(int layerToSet,bool visibility);
+    std::vector<ldtk::Tile>& getTiles();
 private:
-
-
+    //array of tileset texture paths that are needed by a level
+    std::vector<std::string*> tilesetFilePaths;
+    std::vector<std::pair<std::vector<ldtk::Tile>,bool>>allLevelTiles;
+        //world file currently loaded from disk
+    ldtk::World *currentlyLoadedWorld;
+    int currentlyLoadedLevelID;
 };
 
 

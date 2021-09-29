@@ -34,6 +34,7 @@ endif()
 
 add_executable(${PROJECT_NAME} main.cpp Graphics/Graphics.cpp Graphics/Graphics.h Maps/Map.cpp Maps/Map.h)
 #set(raylib_VERBOSE 1)
+
 target_link_libraries(${PROJECT_NAME} raylib LDtkLoader)
 
 # Checks if OSX and links appropriate frameworks (Only required on MacOS)
