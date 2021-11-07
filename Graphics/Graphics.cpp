@@ -8,10 +8,10 @@
 void Graphics::init(int Width, int Height) {
 
     InitWindow(1024,768,"testing");
-    SetWindowState(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_MAXIMIZED);
+    SetWindowState(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_MAXIMIZED | FLAG_MSAA_4X_HINT);
     output = LoadRenderTexture(Width,Height);
-    SetWindowMinSize(output.texture.width*4,output.texture.height*4);
-   SetTargetFPS( 60);
+   // SetWindowMinSize(output.texture.width*4,output.texture.height*4);
+    SetTargetFPS( 60);
 }
 
 void Graphics::BeginScaleDrawing()
