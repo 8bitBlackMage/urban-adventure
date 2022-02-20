@@ -44,4 +44,24 @@ void Graphics::DrawOutput()
     DrawFPS(10,10);
 }
 
+void Graphics::DrawLayers() {
+    for(auto l: layers)
+    {
+        l->renderLayer();
+    }
+}
+
+void Graphics::addLayer(Layer *l)
+{
+    if(std::find(layers.begin(),  layers.end(), l)== layers.end())
+    {
+        layers.push_back(l);
+    }
+}
+
+void Graphics::addAndMakeVisible(Layer *l)
+{
+    addLayer(l);
+    l->setVisible(true);
+}
 

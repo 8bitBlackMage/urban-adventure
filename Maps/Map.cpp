@@ -3,30 +3,32 @@
 //
 
 #include "Map.h"
+#include "../SingletonResourceLoader.h"
+
 Map::Map()
 {
 
 }
 
-Map::Map(std::string worldFile, ldtk::Level currentlyLoadedLevel){
+void Map::loadWorld(std::string worldFile) {
+    currentlyLoadedWorld.loadFromFile(worldFile);
 
 }
 
-void Map::loadWorld(std::string worldFile)
+void Map::LoadLevel(int levelID)
 {
-    LoadLevelFromOtherWorld(worldFile,1);
-}
-
-void Map::LoadLevel(int levelID) {
 
 }
 
-void Map::LoadLevelFromOtherWorld(std::string mapFile, int levelID) {
-    currentlyLoadedWorld->loadFromFile(mapFile);
-    LoadLevel(levelID);
+void Map::populateTextures(std::map<int, Texture2D*> &data)
+{
+    for(int i = 0; i < tilesetFilePaths.size(); ++i)
+    {
+        //data.emplace(i,LoadTexture(tilesetFilePaths.find(i)->second.c_str() ) );
+     //   data.emplace(i, SingletonResourceLoader::getInstance()->loadTexture(tilesetFilePaths.find(i)->second ));
+    }
 }
 
-std::vector<std::string *> &Map::getTexturePaths() {
-    return tilesetFilePaths;
-}
+
+
 

@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.11) # FetchContent is available in 3.11+
 project(RaylibTopDown)
-
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 # Set this to the minimal version you want to support
-find_package(raylib 3.0 QUIET) # Let CMake search for a raylib-config.cmake
+find_package(raylib 4.0 QUIET) # Let CMake search for a raylib-config.cmake
 
 add_subdirectory(LDtkLoader)
 # You could change the QUIET above to REQUIRED and remove this if() clause
@@ -32,8 +32,8 @@ endif()
 
 # This is the main part:
 
-add_executable(${PROJECT_NAME} main.cpp Graphics/Graphics.cpp Graphics/Graphics.h Maps/Map.cpp Maps/Map.h)
-#set(raylib_VERBOSE 1)
+add_executable(${PROJECT_NAME} main.cpp Graphics/Graphics.cpp Graphics/Graphics.h Maps/Map.cpp Maps/Map.h Graphics/Layer.cpp Graphics/Layer.h SingletonResourceLoader.cpp SingletonResourceLoader.h)
+set(raylib_VERBOSE 1)
 
 target_link_libraries(${PROJECT_NAME} raylib LDtkLoader)
 
